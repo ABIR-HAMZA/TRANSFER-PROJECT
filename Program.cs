@@ -36,10 +36,32 @@ app.MapGet("/alone", () =>
 {
     return "where are you?";
 });
+app.MapGet("/u", () =>
+{
+    var response = new {message = "Please wait for one year",success = true};
 
+    return Results.Ok(response);
+
+});
+app.MapPost("/me", () =>
+{
+    var response = new {messsage = "I will wait till my death",success = true};
+    return Results.Created();
+});
+var places = new List<Place>()
+{
+    new Place("Bandarban",2000),
+    new Place("Rangamati",2000)
+};
+app.MapGet("/tour", () =>
+{
+    return Results.Ok(places);
+});
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
+
+public record Place(string name,int price);
