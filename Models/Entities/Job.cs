@@ -8,6 +8,7 @@ namespace DOTNEW_WEBAPI.Models.Entities
     public class Job
     {
         public int Id {get;set;}
+        public int sId{get;set;}
         
     }
 }
